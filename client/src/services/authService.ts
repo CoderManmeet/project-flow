@@ -11,10 +11,6 @@ export const loginUser = async (data: LoginData): Promise<AuthResponse> => {
   return response.data;
 };
 
-export const logoutUser = async (): Promise<void> => {
-  await axiosInstance.post('/auth/logout');
-};
-
 export const getCurrentUser = async (): Promise<AuthResponse> => {
   const response = await axiosInstance.get<AuthResponse>('/auth/me');
   return response.data;
