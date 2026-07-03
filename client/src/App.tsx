@@ -9,6 +9,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
+import Calendar from './pages/Calendar';
+import Team from './pages/Team';
 
 function App() {
   const checkAuth = useAuthStore((state) => state.checkAuth);
@@ -29,6 +31,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/team" element={<Team />} />
           </Route>
         </Route>
 

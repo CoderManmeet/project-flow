@@ -25,6 +25,7 @@ const taskSchema = new mongoose.Schema(
       },
     ],
     order: { type: Number, default: 0 }, // for kanban drag-drop ordering
+    deadlineNotified: { type: Boolean, default: false },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { timestamps: true }

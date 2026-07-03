@@ -42,13 +42,21 @@ export const getProject = asyncHandler(async (req, res) => {
 export const createProject = asyncHandler(async (req, res) => {
   const { title, description, deadline, color, members } = req.body;
   const project = await Project.create({
-    title,
-    description,
-    deadline,
-    color,
-    members: members || [],
-    createdBy: req.user._id,
+    title, description, deadline, color,
+    members: members || [], createdBy: req.user._id,
   });
+
+  if (members && members.length > 0) {
+    for (const userId of members) {
+      await createNotification({
+        recipient: userId,
+        type: 'added_to_project',
+        message: `You were added to "${title}"`,
+        relatedProject: project._id,
+      });
+    }
+  }
+
   res.status(201).json({ success: true, project });
 });
 

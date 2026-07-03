@@ -4,6 +4,7 @@ export interface User {
   email: string;
   role: 'admin' | 'manager' | 'member';
   avatar: string;
+  status?: 'active' | 'inactive';
 }
 
 export interface RegisterData {
